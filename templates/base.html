@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from sayidan_h1.kenzap.com/homepage-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Feb 2020 17:48:36 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+   <link rel="icon" href="/static/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/meanmenu.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="/static/js/libs/modernizr.custom.js"></script>
+    <title>{% block title %}
+        {% endblock %}
+    </title>
+    <body>
+        <div class="main-wrapper page">
+            <!--Begin header ưrapper-->
+            <div class="header-wrapper header-position">
+                <header id="header" class="container-header type1">
+                    <div class="top-nav">
+                        <div class="container">
+                            <div class="row">
+                                <div class="top-left col-sm-6 hidden-xs">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="mailto:admin@admin.com">
+                                                <span class="icon mail-icon"></span>
+                                                <span class="text">admin@admin.com</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon phone-icon"></span>
+                                                <span class="text">+374 99 000 000</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="top-right col-sm-6 col-xs-12">
+                                    <ul class="list-inline">
+                                        <li class="top-search">
+                                            <form class="navbar-form search no-margin no-padding">
+                                                {% if session['logged_in'] %}
+              
+                                                <h5 class="mr-3"> {{ session['user']['full_name'] }}</h5>
+                                                
+                                            {% endif %}
+                                            </form>
+                                        </li>
+                                        <li class="login">
+                                            {% if session['logged_in'] %}
+            
+                                            <li class="nav-item active">
+                                              <a class="nav-link" href="{{url_for('logout')}}">Log out <span class="sr-only">(current)</span></a>
+                                            </li>
+                                          {% else %}
+                                            <li class="nav-item active">
+                                              <a class="nav-link" href="{{ url_for('login') }}">Log in<span class="sr-only">(current)</span></a>
+                                            </li>
+                                          {% endif %}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-middle">
+                        <div class="container">
+                            <div class="logo hidden-sm hidden-xs">
+                                <a href="/"> <img src="/static/images/logo.png" alt="logo" ></a>
+                            </div>
+                            <div class="menu" >
+                                <nav role="presentation" class="active">
+                                    <ul class="nav navbar-nav" >
+                                        <li >
+                                            <a href="/" >HOME</a>
+                                        </li>
+                                        <li>
+                                            <a href="/about">ABOUT US</a>
+                                        </li>
+        
+                                        <li>
+                                           <a href="/universities/page/1">UNIVERSITIES</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">CONTACT</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="area-mobile-content visible-sm visible-xs">
+                                <div class="logo-mobile">
+                                    <a href="homepage-1.html"> <img src="/static/images/logo-small.png" alt="logo"></a>
+                                </div>
+                                <div class="mobile-menu ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <!--End header wrapper-->
+    
+</head>
+    {% block slider %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+   
+
+ 
+      <!--Begin footer wrapper-->
+      <div class="footer-wrapper type2">
+        <footer class="foooter-container">
+            <div class="container">
+                <div class="footer-middle">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12 animated footer-col">
+                            <div class="contact-footer">
+                                <div class="logo-footer">
+                                    <a href="/"><img src="/static/images/logo.png" alt=""></a>
+                                </div>
+                                <div class="contact-desc">
+                                    <p class="text-light">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare.</p>
+                                </div>
+                                <div class="contact-phone-email">
+                                    <span class="contact-phone"><a href="#">+374 10 000 000</a> | <a href="#">+374 99 000 000 </a> </span>
+                                    <span class="contact-email"><a href="#">admin@admin.com</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-12  col-xs-12 animated footer-col">
+                            <div class="links-footer">
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <h6 class="heading-bold">DASHBOARD</h6>
+                                        <ul class="list-unstyled no-margin">
+                                            <li><a href="/signup">REGISTER</a></li>
+                                            <li><a href="/universities/page/1">UNIVERSITY</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-sm-4 col-xs-12">
+                                        <h6 class="heading-bold">ABOUT US</h6>
+                                        <ul class="list-unstyled no-margin">
+                                            <li><a href="/gallery">GALLERY</a></li>
+                                            <li><a href="/">HOMEPAGE</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-sm-4 col-xs-12">
+                                        <h6 class="heading-bold">SUPPORT</h6>
+                                        <ul class="list-unstyled no-margin">
+                                            <li><a href="/contact">CONTACT US</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 animated footer-col">
+                            <div class="links-social">
+                                <div class="login-dashboard">
+                                    <a href="/login" class="bg-color-theme text-center text-regular">Login Dashboard</a>
+                                </div>
+                                <ul class="list-inline text-center">
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom text-center">
+                    <p class="copyright text-light">©2020 National Polytechnic University of Armenia</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--End footer wrapper-->
+</div>
+
+<script src="/static/js/libs/jquery-2.2.4.min.js"></script>
+<script src="/static/js/libs/bootstrap.min.js"></script>
+<script src="/static/js/libs/owl.carousel.min.js"></script>
+<script src="/static/js/libs/jquery.meanmenu.js"></script>
+<script src="/static/js/libs/jquery.meanmenu.js"></script>
+<script src="/static/js/libs/jquery.syotimer.js"></script>
+<script src="/static/js/libs/parallax.min.js"></script>
+<script src="/static/js/libs/jquery.waypoints.min.js"></script>
+<script src="/static/js/custom/main.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        $('#time').syotimer({
+            year: 2016,
+            month: 12,
+            day: 7,
+            hour: 7,
+            minute: 7,
+        });
+    });
+</script>
+</html>

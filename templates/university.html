@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="content-wrapper">
+    <div class="career-opportunity">
+        <div class="container">
+            <div class="top-section">
+                <div class="title-page">
+                    <h4 class="text-regular">{{univer}}</h4>
+                    <span class="company"><img src="/static/images/university/{{univer.university_picture}}" alt="" style="width: 600px; height: 300px;"></span>
+                </div>
+                <label style="display: block; width: 600px;">{% if univer.desc %}{{univer.desc}}{% else %} {% endif %}</label>
+                <a href="{{ url_for('international',id =univer.id) }}" class="bnt bnt-theme" style="color:#FF0000;"><h5>ՄԻջազգային կապեր</h5></a></span>
+                <div class="sellect-career-opportunity">
+                        <form class="navbar-form no-margin" action="" method="GET">
+                            <label class="text-light">Filter</label>
+                            <ul class="list-item">
+                                <li class="input-box">
+                                    <input type="text" name="text" class="input-search-keywords" placeholder="Keywords (e.g. name, city, school...)" autocomplete="off">
+                                </li>
+                                
+                                
+                                <li class="select-role select">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <a href="#" class="option-button">
+                                            <span class="name">Fulltime</span>
+                                            <span class="select-icon"><span class="lnr lnr-chevron-down"></span></span>
+                                        </a>
+                                    </div>
+                                    <ul class="dropdown-menu select-box">
+                                        {%for i in degree %}
+                                        <li class="selected">
+                                            <label for="state{{i.id}}" class="state-label">{{i.name}}</label>
+                                            <input id="state{{i.id}}"  {% if loop.index == 1 %} checked='true' {% endif %}  type="radio" value="{{i.id}}" name="degree" style="display: none;">
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="button-set">
+                                    <button type="submit" class="bnt text-regular">Search</button>
+                                </li>
+                            </ul>
+                            
+                        </form>
+                    </div>
+            </div>
+            
+            <div class="alumni-directory-content">
+                <ul class="list-item">
+                    <li class="label-content">
+                        <span class="company">Department</span>
+                        <span class="position">Price</span>
+                        <span class="location">Duration</span>
+                        <span class="apply">Degree</span>
+                        
+                    </li>
+                    {% for department in dep %}
+                    <li class="box-content">
+                        <span class="company"><h4>{{department.name}}</h4></span>
+                        <span class="position">{{department.price}} դրամ</span>
+                        <span class="location">{{department.duration}} տարի</span>
+                        {% if department.degree == 1 %}
+                        <span class="apply">բակալավրիատ</span>
+                        {% else %}
+                        <span class="apply">մագիստրատուրա</span>
+                        {% endif %}
+                        
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block content %}
+
+    <!--Begin content wrapper-->
+    <div class="content-wrapper">
+        <div class="account-page register text-center">
+            <div class="container">
+                <div class="account-title">
+                    <h4 class="heading-light">LOG IN INTO ALUMNI DASHBOARD</h4>
+                </div>
+                <div class="account-content">
+                    <form action="/register" method="post">
+                        <div class="input-box fullname">
+                            <input type="text" placeholder="Full Name" name="full_name"  autocomplete="off">
+                            {% if errors['full_name'] %}
+                            <div >
+                                    <small class="form-text text-danger">{{ errors['full_name'] }}</small>
+                            </div>
+                                {% endif %}
+                        </div>
+                        <div class="input-box email">
+                            <input type="text" placeholder="Email Address"  name="email"  autocomplete="on">
+                            {% if errors['email'] %}
+                            <div >
+                                    <small class="form-text text-danger">{{ errors['email'] }}</small>
+                            </div>
+                                {% endif %}
+                        </div>
+                        <div class="input-box password">
+                            <input type="password" placeholder="Password" name="password" >
+                            {% if errors['password'] %}
+                            <div >
+                                    <small class="form-text text-danger">{{ errors['password'] }}</small>
+                            </div>
+                                {% endif %}
+                        </div>
+                        <div class="input-box very-password">
+                            <input type="password" placeholder="Verify Password" name="verify_password"  fontsize="20">
+                            {% if errors['verify_password'] %}
+                            <div >
+                                    <small class="form-text text-danger">{{ errors['verify_password'] }}</small>
+                            </div>
+                                {% endif %}
+                        </div>
+
+                        <div class="buttons-set">
+                            <input class="btn bnt-theme text-regular text-uppercase" type="submit" value="Sign up">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End content wrapper-->
+    {% endblock %}

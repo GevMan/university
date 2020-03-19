@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% block slider %}
+    <!--Begin content wrapper-->
+    <div class="content-wrapper">
+        <div class="blog-content blog-content-fullwidth">
+            <div class="container">
+                <div class="blog-post-content full-width">
+                    <!--Blog Post-->
+                    <div class="blog-post">
+                        <div class="area-img">
+                            <img class="img-responsive" src="/static/images/shutterstock-fullwidth.jpg" alt="">
+                            <div class="blog-text">
+                                <div class="category">
+                                </div>
+                                <div class="article-title">
+                                    <h2 class="text-regular text-capitalize">CONTACT US</h2>
+                                </div>
+                        </div>
+                        {% endblock %}
+                        {% block content %}
+                        <div class="area-content">
+                            
+                            
+                            <div class="desc-center text-center">
+                                <p>“ You never accomplish anything alone, I was feeling the absence of the people who were most influential in etting me to this point. etting me to this point. I wished they could be here too. ”</p>
+                            </div>
+                            
+                            
+                        </div>
+
+                    </div>
+
+                    
+                 
+                    <!-- send message-->
+                    <div class="write-comments">
+                        <div class="box-comments">
+                            <div class="title-write">
+                                <h4 class="heading-regular">Send Message</h4>
+                            </div>
+                            <form method="post" action="/sendMessage">
+                                <div class="input-box your-comment">
+                                    <textarea placeholder="Your Text" cols="1" rows="1" name="text" value="{{request.form.text}}"></textarea>
+                                    {% if error['text'] %}
+                            <div >
+                                    <small class="form-text text-danger">{{ error['text'] }}</small>
+                            </div>
+                                {% endif %}
+                                </div>
+                                <div class="input-box email">
+                                    <input type="text" placeholder="Full Name" name="full_name" value="{{request.form.full_name}}">
+                                </div>
+                                <div class="input-box password">
+                                    <input type="text" placeholder="Email Address" name="email" value="{{request.form.email}}">
+                                </div>
+                                <div class="buttons-set">
+                                    <button type="submit"  class="bnt bnt-theme text-regular text-uppercase">SEND</button>
+                                </div>   
+                             
+                                
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End content wrapper-->
+    {% endblock %}
+   

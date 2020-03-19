@@ -1,0 +1,88 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <!--Begin content wrapper-->
+    <div class="content-wrapper">
+        <div class="career-opportunity">
+            <div class="container">
+                <div class="top-section">
+                    <div class="title-page">
+                      
+                        <h4 class="text-regular">ՀՀ ՊԵՏԱԿԱՆ ԲՈՒՀԵՐ</h4>
+                    </div>
+                    <div class="sellect-career-opportunity">
+                            <form class="navbar-form no-margin" action="" method="GET">
+                                <label class="text-light">Filter</label>
+                                <ul class="list-item">
+                                    <li class="input-box">
+                                        <input type="text" name="text" class="input-search-keywords" placeholder="Keywords (e.g. name, city, school...)" autocomplete="off" >
+                                    </li>
+                                    
+                                    <li class="select-rate select">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <a href="#" class="option-button">
+                                                <span class="name" >Location </span>
+                                                <span class="select-icon"><span class="lnr lnr-chevron-down"></span></span>
+                                            </a>
+                                        </div>
+
+                                        <ul class="dropdown-menu select-box" >
+                                
+                                            {% for state in states %}
+                                            <li class="selected">
+                                                <label for="state{{state.id}}" class="state-label">{{state.name}}</label>
+                                                <input id="state{{state.id}}"  {% if loop.index == 1 %} checked='true' {% endif %}  type="radio" value="{{state.id}}" name="state" style="display: none;">
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li class="button-set">
+                                        <button  type="submit" class="bnt text-regular">Search</button>
+                                    </li>
+                                </ul>
+
+                            </form>
+                        </div>
+                </div>
+                <div class="alumni-directory-content">
+                    <ul class="list-item">
+                        <li class="label-content">
+                            <span class="company">Company</span>
+                            <span class="position">Name</span>
+                            <span class="location">Province</span>
+                            <span class="apply"></span>
+                        </li>
+                        {% for university in page.items %}
+                        
+                        <li class="box-content">
+                            
+                            <span class="company"><img src="/static/images/logo/{{university.logo}}" alt="" style="width:150px;height:150px;"></span>
+                            <span class="position"><h4>{{university}}</h4></span>
+                            <span class="location">{{university.state.name}}</span>
+                            <span class="apply"><a href="{{ url_for('university_dep',id =university.id) }}" class="bnt bnt-theme">Departments</a></span>
+                            
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% for i in page.iter_pages() %}
+                
+    
+                {% if i %}
+                <ul class="pagination "  >
+                    <li><a  href="{{url_for('universities',page_num=i)}}"  tabindex="-1">{{ i }}</a></li>
+                </ul>
+                    
+                    {% else %}
+                    ...
+                    {% endif %}
+                    {% endfor %}
+            </div>
+        </div>
+        
+
+    </div>
+    <!--End content wrapper-->
+ 
+    {% endblock %}
+   
