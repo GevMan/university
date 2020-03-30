@@ -3,7 +3,7 @@ from sqlalchemy import Column, types,FLOAT
 from sqlalchemy import create_engine,engine
 from flask_login import current_user,login_manager
 from flask_login import UserMixin
-engine = create_engine('mysql+mysqlconnector://root:''@localhost/diplom', convert_unicode=True)
+engine = create_engine('mysql+mysqlconnector://ldnapm80t9dh5dce:ftm6ffn1bjyavcdu@u3r5w4ayhxzdrw87.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/qw4h0rr8ia06zybf', convert_unicode=True)
 
 
 
