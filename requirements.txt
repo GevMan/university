@@ -48,7 +48,6 @@ marshmallow-sqlalchemy==0.21.0
 matplotlib==3.2.1
 mimerender==0.6.0
 multidict==4.7.4
-mysql-client==0.0.1
 mysql-connector==2.2.9
 mysql-connector-python==8.0.19
 nltk==3.4.5
