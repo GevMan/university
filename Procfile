@@ -1,1 +1,1 @@
-web: gunicorn diplom:app
+web: gunicorn app:app
