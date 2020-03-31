@@ -15,7 +15,7 @@ chardet==3.0.4
 Click==7.0
 cryptography==2.8
 cycler==0.10.0
-Django==3.0.2
+Django==3.0.3
 django-mysql==3.3.0
 dnspython==1.16.0
 elasticsearch==7.5.1
