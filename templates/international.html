@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% block content %}
+
+    <div class="accordion" id="accordionExample">
+        {% for country in countries %}
+        <div class="card">
+
+            <div class="card-header" id="headingTwo">
+
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#country{{country.id}}"  aria-expanded="false" aria-controls="collapseTwo">
+                        <img src="/static/images/flag/{{ country.flag }}" alt="Smiley face" height="25" width="25">
+                            {{ country.name }}
+
+                    </button>
+
+            </div>
+
+            <div id="country{{country.id}}"  class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                {% for university in univer %}
+                    {% if university.country == country.id %}
+
+                <div class="card-body">
+                    <a href="{{ university.link }}" {% if university.link == 'None' %} href ="#"{% endif %} target="_blank" >{{ university.name }}</a>
+                </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

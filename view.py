@@ -19,9 +19,11 @@ class MyModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
 
+
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
         return current_user.is_authenticated
+
 
 Admin = Admin(app, index_view=MyAdminIndexView())
 Admin.add_view(MyModelView(users, db.session))
@@ -34,10 +36,11 @@ Admin.add_view(MyModelView(international_universities, db.session))
 Admin.add_view(MyModelView(country, db.session))
 Admin.add_link(MenuLink(name='Home Page', url='/'))
 
-class LogoutMenuLink(MenuLink):
 
+class LogoutMenuLink(MenuLink):
     def is_accessible(self):
         return current_user.is_authenticated
+
 
 Admin.add_link(LogoutMenuLink(name='Log Out', category='', url="/logout_admin"))
 
@@ -45,15 +48,19 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = ''
 
+
 @login_manager.user_loader
 def load_user(id):
     return users.query.get(int(id))
 
+
 app.secret_key = 'secret_key'
+
 
 @app.route('/')
 def index():
     return render_template('homepage-1.html')
+
 
 @app.route('/about')
 def about():
@@ -76,7 +83,6 @@ def login():
 
 @app.route('/signin' , methods = ['POST'])
 def signin():
-    
     user = users.query.filter(
         db.and_(users.email == request.form['email'], users.password == request.form['password'])).first()
     if user == None:
@@ -96,17 +102,20 @@ def signin():
 
             return (redirect(url_for('index')))
 
+
 @app.route('/logout')
 def logout():
     session.pop('logged_in')
     session.clear()
     return redirect(url_for('login'))
 
+
 @app.route('/logout_admin')
 def logout_admin():
     logout_user()
     session.clear()
     return redirect(url_for('login'))
+
 
 @app.route('/signup')
 def signup(): 
@@ -123,19 +132,19 @@ def reg():
     try: 
         if len(request.form['full_name'])<3:
             messages['full_name'] = 'Your name is too short'
-        
+
         if len(request.form['password'])<6:
             messages['password'] = 'Password is too short'
-        
+
         if request.form['password'] != request.form['verify_password']:
             messages['verify_password'] = 'Passwords must match'
-        
+
         if not validate_email(request.form['email']):
             messages['email'] = 'Email is not valid'
-        
+
         if check_email and check_email.email == request.form['email']:
             messages['email'] = 'Email already exists'
-    
+
         if len(messages) > 0:
             return redirect(url_for('signup', messages=json.dumps(messages)))
         new_user = users(full_name = request.form['full_name'],email= request.form['email'], password = generate ,role_id = 2)
@@ -146,6 +155,7 @@ def reg():
         pass
     return(redirect(url_for('signup',messages=json.dumps(messages))))
 
+
 @app.route('/contact')
 def contact():
     message = None
@@ -153,16 +163,17 @@ def contact():
         message = json.loads(request.args.get('message'))
     return render_template('contact.html',error = message)
 
+
 @app.route("/sendMessage",methods=['POST'])
 def sendMsg():
     message = dict()   
     try:
         if len(request.form['email'])<1:
             message = 'enter an email'
-            
+
         if len(request.form['text'])<1:
             message = 'enter a text'
-        msg = Message(request.form['full_name'], 
+        msg = Message(request.form['full_name'],
                     recipients=['gevman97@gmail.com'],
                     html="Email: " +request.form['email'] +'<br>'+ "  Message: " + request.form['text']+" ")
         mail.send(msg)
@@ -170,6 +181,7 @@ def sendMsg():
     except:
         pass
     return(redirect(url_for('contact',message=json.dumps(message))))
+
 
 @app.route('/department/<id>')
 def university_dep(id):
@@ -182,6 +194,7 @@ def university_dep(id):
         university_department = department.query.filter(db.and_(department.university_id == id,department.degree ==request.args.get('degree'), department.name.like(search))).all()
     return render_template('university.html',dep=university_department, univer = univer,degree=degrees)
 
+
 @app.route('/gallery')
 def gallery():
     return render_template('galery.html')
@@ -191,12 +204,15 @@ def gallery():
 def story():
     return render_template('story.html')
 
+
 @app.route('/events')
 def events():
     return render_template('programs-events.html')
+
 
 @app.route('/department/<id>/international')
 def international(id):
     countries = country.query.filter(db.and_(country.id == international_universities.country, international_universities.university_id == id)).all()
     univer = international_universities.query.filter(db.and_(international_universities.country == country.id,international_universities.university_id == id)).all()
+
     return render_template('international.html' ,countries = countries, univer=univer)
